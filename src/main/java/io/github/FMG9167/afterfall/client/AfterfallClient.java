@@ -1,13 +1,16 @@
 package io.github.FMG9167.afterfall.client;
 
+import io.github.FMG9167.afterfall.blocks.AfterfallBlocks;
 import io.github.FMG9167.afterfall.entities.AfterfallEntities;
 import io.github.FMG9167.afterfall.entities.AfterfallModelLayers;
 import io.github.FMG9167.afterfall.entities.mutant.MutantModel;
 import io.github.FMG9167.afterfall.entities.mutant.MutantRenderer;
 import io.github.FMG9167.afterfall.entities.rogue.RogueModel;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.ZombieEntityRenderer;
 
 public class AfterfallClient implements ClientModInitializer {
@@ -21,5 +24,6 @@ public class AfterfallClient implements ClientModInitializer {
         EntityRendererRegistry.register(AfterfallEntities.ROGUE, ZombieEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(AfterfallModelLayers.ROGUE, RogueModel::getTexturedModelData);
 
+        BlockRenderLayerMap.INSTANCE.putBlock(AfterfallBlocks.DEAD_SAPLING, RenderLayer.getCutout());
     }
 }
